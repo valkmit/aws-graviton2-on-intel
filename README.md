@@ -1,6 +1,6 @@
 # Prebuilt images available on Docker Hub
 
-https://hub.docker.com/repository/docker/valkmit/aws-graviton2-on-intel
+https://hub.docker.com/r/valkmit/aws-graviton2-on-intel
 
 ## What is this?
 

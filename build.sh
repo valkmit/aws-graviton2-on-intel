@@ -78,7 +78,7 @@ if [[ -z "$TARBALL_BUILDROOT" ]]; then
 fi
 
 # delete the old workdir, we don't know how stale it has become
-#rm -rf "$WORKDIR" # TEMPORARY REMOVEME
+rm -rf "$WORKDIR"
 
 # build qemu under docker
 qemu_install_dir="$WORKDIR/qemu-install"
@@ -99,16 +99,16 @@ fi
 
 # extract the buildroot source into the workdir
 buildroot_src="$WORKDIR/buildroot-src"
-# mkdir -p "$buildroot_src"
-# tar xzf "$TARBALL_BUILDROOT" --strip-components=1 -C "$buildroot_src" 
-# cp "$BUILDROOT_CONFIG" "$buildroot_src/.config"
-# cp toolchain-build-install.sh "$buildroot_src/toolchain-build-install.sh"
+mkdir -p "$buildroot_src"
+tar xzf "$TARBALL_BUILDROOT" --strip-components=1 -C "$buildroot_src" 
+cp "$BUILDROOT_CONFIG" "$buildroot_src/.config"
+cp toolchain-build-install.sh "$buildroot_src/toolchain-build-install.sh"
 
-# # farm out to docker to actually build the toolchain
-# docker run -it --rm \
-#     -v "$(realpath $buildroot_src):/root/buildroot-src" \
-#     debian:10 \
-#     /bin/bash /root/buildroot-src/toolchain-build-install.sh
+# farm out to docker to actually build the toolchain
+docker run -it --rm \
+    -v "$(realpath $buildroot_src):/root/buildroot-src" \
+    debian:10 \
+    /bin/bash /root/buildroot-src/toolchain-build-install.sh
 
 # sanity check that the toolchain is actually available
 toolchain_tarball="$buildroot_src/host.tar.gz"

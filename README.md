@@ -24,6 +24,9 @@ At a minimum, you must provide the rootfs as a .tar.gz with -r. The script
 will download buildroot if it is not provided with -b. For a prebuilt image,
 please visit the corresponding Docker hub page (link provided above).
 
+The only requirement to build is Docker - both Qemu and the toolchain are
+built in Docker containers based on Debian 10.
+
 All of the native cross compile tools are available prefixed with
 `aarch64-linux`. For example, `aarch64-linux-gcc`, or `aarch64-linux-g++`.
 To observe how the toolchain is configured, you may view

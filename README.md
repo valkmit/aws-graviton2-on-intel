@@ -72,4 +72,4 @@ performance.
 
 ## Credits
 
-Lots of back and forth with gh:MelloJello
+Lots of back and forth with gh:JosiahWhite
